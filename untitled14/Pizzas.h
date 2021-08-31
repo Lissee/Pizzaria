@@ -15,10 +15,8 @@ protected:
     unsigned short size[4] = {25, 30, 35, 40};
 
 public:
-
     Pizzas () = default;
     ~Pizzas() = default;
-
 };
 
 
@@ -31,6 +29,7 @@ protected:
 
     unsigned short salt, cheese;
     char check;
+    int x=0, y = 0;
 
     vector <double> total_price;
     vector<unsigned short> cheque;
@@ -74,8 +73,7 @@ protected:
     }
     
      // Цена одной пиццы:
-  void Price ()
-    {
+  void Price (){
         total_price.emplace_back(min_price[x] + ((double)size[y]/25 - 1) + cheese * (0.22 + ((double)size[y]/25 - 1)) + salt * (0.11 + ((double)size[y]/25 - 1)));
     }
 
@@ -106,9 +104,6 @@ public:
         check = '+';
     }
     ~Order () = default;
-
-    int x=0, y = 0;
-
 
     //Составляем заказ
     void New_pizza ()
@@ -180,7 +175,6 @@ public:
             return;
         };
     };
-
 
 #ifndef UNTITLED14_PIZZAS_H
 #define UNTITLED14_PIZZAS_H
