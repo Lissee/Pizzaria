@@ -72,6 +72,32 @@ protected:
         }
         return product;
     }
+    
+     // Цена одной пиццы:
+  void Price ()
+    {
+        total_price.emplace_back(min_price[x] + ((double)size[y]/25 - 1) + cheese * (0.22 + ((double)size[y]/25 - 1)) + salt * (0.11 + ((double)size[y]/25 - 1)));
+    }
+
+    //Чек
+    void Print_order () {
+      x = 0, y = 0;
+
+      cout << "Order:" <<endl;
+      while (x<cheque.size()) {
+          cout << "--------------------------------------------------------------------------------------------" <<endl;
+          cout << "Pizza: "<< name[cheque[x]] <<" | Size: " << size[cheque[x+1]] <<endl;
+          x = x+2;
+          cout << "Amount of cheese: "<< cheque[x] <<" | Amount of salt: " << cheque[x+1] <<endl;
+          x = x+2;
+          cout << "Price: " << total_price[y] << "$" << endl;
+          y = y +1;
+          if (x<cheque.size()) {total_price[0] = total_price[0] + total_price[y];}
+          cout << "--------------------------------------------------------------------------------------------" <<endl; }
+      cout << "Final price: " << total_price[0] << "$" << endl <<endl;
+      check = '*';
+  }
+
 
 public:
     Order() {
@@ -152,35 +178,8 @@ public:
             }
         }
             return;
+        };
     };
-
-
-
- // Цена одной пиццы:
-  void Price ()
-    {
-        total_price.emplace_back(min_price[x] + ((double)size[y]/25 - 1) + cheese * (0.22 + ((double)size[y]/25 - 1)) + salt * (0.11 + ((double)size[y]/25 - 1)));
-    }
-
-    //Чек
-    void Print_order () {
-      x = 0, y = 0;
-
-      cout << "Order:" <<endl;
-      while (x<cheque.size()) {
-          cout << "--------------------------------------------------------------------------------------------" <<endl;
-          cout << "Pizza: "<< name[cheque[x]] <<" | Size: " << size[cheque[x+1]] <<endl;
-          x = x+2;
-          cout << "Amount of cheese: "<< cheque[x] <<" | Amount of salt: " << cheque[x+1] <<endl;
-          x = x+2;
-          cout << "Price: " << total_price[y] << "$" << endl;
-          y = y +1;
-          if (x<cheque.size()) {total_price[0] = total_price[0] + total_price[y];}
-          cout << "--------------------------------------------------------------------------------------------" <<endl; }
-      cout << "Final price: " << total_price[0] << "$" << endl <<endl;
-      check = '*';
-  }
-};
 
 
 #ifndef UNTITLED14_PIZZAS_H
